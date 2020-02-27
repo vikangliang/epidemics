@@ -1,8 +1,10 @@
 package com.huag.epidemics.controller;
 
+import com.huag.epidemics.pojo.UserInfo;
 import com.huag.epidemics.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -12,8 +14,23 @@ public class UserController {
     IUserService iUserService;
 
     @RequestMapping("/login")
-    public String login() {
-        iUserService.test();
-        return "main";
+    public String login(UserInfo userInfo, Model model) {
+        System.out.println(userInfo.getAccount());
+//        iUserService.test();
+        UserInfo user = iUserService.findByAccount(userInfo.getAccount());
+        if (user == null) {
+            //账号不正确
+            model.addAttribute("msg", "账号不正确");
+            return "login";
+        }
+        if (user.getPassword().equals(userInfo.getPassword())) {
+            //登入成功
+            return "main";
+        }
+        //登入失败
+        model.addAttribute("msg", "密码不正确");
+        return "login";
+
+
     }
 }
