@@ -9,8 +9,14 @@
 <html>
 <head>
     <title>疫情信息</title>
+    <style type="text/css">
+        #controller{
+            height: 500px;
+        }
+    </style>
 </head>
 <body>
-疫情统计信息,增加了些信息
+<div id="controller" >疫情统计信息,增加了些信息</div>
+<a href="login.jsp">登入</a>
 </body>
 </html>
