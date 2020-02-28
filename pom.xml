@@ -22,6 +22,7 @@
     <log4j.version>1.2.12</log4j.version>
     <mysql.version>5.1.6</mysql.version>
     <mybatis.version>3.4.5</mybatis.version>
+    <jackson.version>2.5.4</jackson.version>
   </properties>
 
   <dependencies>
@@ -145,6 +146,18 @@
       <version>0.9.1.2</version>
       <type>jar</type>
       <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
     </dependency>
   </dependencies>
 
