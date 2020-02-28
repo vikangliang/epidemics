@@ -7,14 +7,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface IuserDao {
-    @Select("select \n" +
-            "  `user_id`,\n" +
-            "  `account`,\n" +
-            "  `password`,\n" +
-            "  `user_name`,\n" +
-            "  `del_flag` \n" +
-            "from\n" +
+    @Select("SELECT \n" +
+            "  * \n" +
+            "FROM\n" +
             "  `epidemic`.`users` \n" +
-            "limit 0, 1000 ;")
-    public List<UserInfo> getUserInfo();
+            "WHERE `account`=#{account}" +
+            "AND `del_flag` IS NULL OR `del_flag`=0\n" +
+            "LIMIT 0, 1000 ;")
+    public UserInfo findByAccount(String account);
 }

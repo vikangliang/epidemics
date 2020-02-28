@@ -5,8 +5,10 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Repository;
 
 
 import java.io.InputStream;
@@ -21,18 +23,6 @@ public class Test {
         service.test();
     }
 
-    @org.junit.Test
-    public void testMybatis() throws Exception{
-        InputStream in= Resources.getResourceAsStream("mybatis-config.xml");
-        SqlSessionFactoryBuilder builder=new SqlSessionFactoryBuilder();
-        SqlSessionFactory factory=builder.build(in);
-        SqlSession sqlSession=factory.openSession();
-        IuserDao iuserDao=sqlSession.getMapper(IuserDao.class);
-        List<UserInfo> userInfoList=iuserDao.getUserInfo();
-        for(UserInfo userInfo:userInfoList){
-            System.out.println(userInfo.getUserId()+" "+userInfo.getAccount());
-        }
-        sqlSession.close();
-        in.close();
-    }
+
+
 }

@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="controller">
-    <form action="user/login" method="post">
+    <form action="${pageContext.request.contextPath}/user/login" method="post">
         账号：<input type="text" name="account"><br>
         密码：<input type="password" name="password"><br>
         <input type="submit" value="登录">
