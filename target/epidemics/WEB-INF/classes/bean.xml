@@ -17,9 +17,11 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:mybatisconfig.xml"></property>
     </bean>
 
     <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.huag.epidemics.dao"></property>
     </bean>
+
 </beans>

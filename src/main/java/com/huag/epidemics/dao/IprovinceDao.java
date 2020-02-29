@@ -15,7 +15,8 @@ public interface IprovinceDao {
             "and provinces.`province_id` not in (\n" +
             "\tselect epidemics.`province_id`\n" +
             "\tfrom epidemics\n" +
-            "\twhere epidemics.`data_year`=#{year} and epidemics.`data_month`=#{month} and epidemics.`data_day`=#{day}\n" +
-            ")")
+            "\twhere epidemics.`data_year`=#{arg0} and epidemics.`data_month`=#{arg1} and epidemics.`data_day`=#{arg2}\n" +
+            ")order by provinces.`province_py`\n" +
+            "            limit 0,6")
     public List<ProvincesInfo> findNoDataProvinces(short year,short month,short day);
 }

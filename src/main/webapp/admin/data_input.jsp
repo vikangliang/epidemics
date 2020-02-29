@@ -5,7 +5,7 @@
   Time: 20:17
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -96,8 +96,16 @@ loadProvinceList()
         var date=$("#dataDate").val();
         //    从服务器获取还没录入省份的列表
         $.get("${pageContext.request.contextPath}/provinces/ajax/nodataList",{date:date},function (resp) {
-            console.info(resp);
+            if(resp.code<0){
+                alert(msg);
+            }else{
+                fillProvinceToTable(resp.data);
+            }
         }),"json"
+    }
+    
+    function fillProvinceToTable(array) {
+
     }
 </script>
 </body>
