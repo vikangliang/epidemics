@@ -21,14 +21,14 @@ public class ProvinceController {
     IProvinceService iProvinceService;
 
     @GetMapping("/ajax/nodataList")
-@ResponseBody
-    public AjaxResponseInfo noDataProvinceList(String date){
-        List<ProvincesInfo> list=null;
-        AjaxResponseInfo<List<ProvincesInfo>> responseInfo=new AjaxResponseInfo<>();
-        if(!StringUtils.isEmpty(date)){
-            list=this.iProvinceService.findNoDataProvinces(date);
+    @ResponseBody
+    public AjaxResponseInfo noDataProvinceList(String date) {
+        List<ProvincesInfo> list = null;
+        AjaxResponseInfo<List<ProvincesInfo>> responseInfo = new AjaxResponseInfo<>();
+        if (!StringUtils.isEmpty(date)) {
+            list = this.iProvinceService.findNoDataProvinces(date);
             responseInfo.setData(list);
-        }else{
+        } else {
             responseInfo.setCode(-1);
             responseInfo.setMsg("参数不足");
         }
