@@ -11,32 +11,32 @@ public interface IepidemicDao {
      * @param epidemicInfo
      * @return
      */
-    @Insert("INSERT INTO `epidemic`.`epidemics` (\n" +
-            "  `province_id`,\n" +
-            "  `data_year`,\n" +
-            "  `data_month`,\n" +
-            "  `data_day`,\n" +
-            "  `affirmed`,\n" +
-            "  `suspect`,\n" +
-            "  `isolated`,\n" +
-            "  `dead`,\n" +
-            "  `cured`,\n" +
-            "  `user_id`,\n" +
-            "  `input_date`\n" +
-            ") \n" +
-            "VALUES\n" +
-            "  (\n" +
-            "    #{serialId},\n" +
-            "    #{dataYear},\n" +
-            "    #{dataMonth},\n" +
-            "    #{dataDay},\n" +
-            "    #{affirmed},\n" +
-            "    #{suspect),\n" +
-            "    #{isolated},\n" +
-            "    #{dead},\n" +
-            "    #{cured},\n" +
-            "    #{user_id},\n" +
-            "    #{input_date}\n" +
-            "  ) ;")
+//    @Insert(value = "INSERT INTO `epidemic`.`epidemics` (\n" +
+//            "  `province_id`,\n" +
+//            "  `data_year`,\n" +
+//            "  `data_month`,\n" +
+//            "  `data_day`,\n" +
+//            "  `affirmed`,\n" +
+//            "  `suspect`,\n" +
+//            "  `isolated`,\n" +
+//            "  `dead`,\n" +
+//            "  `cured`,\n" +
+//            "  `user_id`,\n" +
+//            "  `input_date`\n" +
+//            ") \n" +
+//            "VALUES\n" +
+//            "  (\n" +
+//            "    #{provinceId},\n" +
+//            "    #{dataYear},\n" +
+//            "    #{dataMonth},\n" +
+//            "    #{dataDay},\n" +
+//            "    #{affirmed},\n" +
+//            "    #{suspect),\n" +
+//            "    #{isolated},\n" +
+//            "    #{dead},\n" +
+//            "    #{cured},\n" +
+//            "    #{userId},\n" +
+//            "    #{inputDate}\n" +
+//            "  ) ;")
     int saveInfo(EpidemicInfo epidemicInfo);
 }

@@ -34,7 +34,12 @@ public class UserController {
         //登入失败
         model.addAttribute("msg", "密码不正确");
         return "login";
+    }
 
-
+    @RequestMapping("/logout")
+    String logout(HttpSession session){
+//        清理session
+        session.invalidate();
+        return "redirect:/epidemic.jsp";
     }
 }

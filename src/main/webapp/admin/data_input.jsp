@@ -110,6 +110,9 @@
     }
 
     function fillProvinceToTable(array) {
+        $("msg").html("");
+        var tbody = $("#tbody1");
+        tbody.empty();
         if (array && array.length > 0) {
             province = array;
             //填充到table
@@ -191,7 +194,11 @@
                 data:JSON.stringify(data),
                 dataType:"json",
                 success:function (resp) {
-                    console.info(resp);
+                    if(resp.code<0){
+                        alert(resp.msg);
+                    }else{
+                        fillProvinceToTable(resp.data);
+                    }
                 }
             });
         } else {

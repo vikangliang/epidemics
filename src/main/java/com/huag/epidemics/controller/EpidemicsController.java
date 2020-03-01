@@ -26,10 +26,15 @@ public class EpidemicsController {
     public AjaxResponseInfo inputData(@RequestBody DailyEpidemicInfo dailyEpidemicInfo, HttpSession session){
 //        System.out.println(dailyEpidemicInfo);
         UserInfo userInfo= (UserInfo) session.getAttribute("loginuser");
-
-        List<ProvincesInfo> list=this.iEpidemicsService.saveData(dailyEpidemicInfo,userInfo.getUserId());
         AjaxResponseInfo ajaxResponseInfo=new AjaxResponseInfo();
-        ajaxResponseInfo.setData(list);
+        if(userInfo==null){
+            ajaxResponseInfo.setCode(-2);
+            ajaxResponseInfo.setMsg("权限不足");
+        }else {
+            List<ProvincesInfo> list = this.iEpidemicsService.saveData(dailyEpidemicInfo, userInfo.getUserId());
+
+            ajaxResponseInfo.setData(list);
+        }
         return ajaxResponseInfo;
     }
 }

@@ -35,7 +35,7 @@ epidemicInfo.setInputDate(date);
 epidemicInfo.setDataYear(year);
 epidemicInfo.setDataMonth(month);
 epidemicInfo.setDataDay(day);
-iepidemicDao.saveInfo(epidemicInfo);
+//iepidemicDao.saveInfo(epidemicInfo);
         }
 
         return iprovinceDao.findNoDataProvinces(year,month,day);
