@@ -1,9 +1,6 @@
 package com.huag.epidemics.controller;
 
-import com.huag.epidemics.pojo.AjaxResponseInfo;
-import com.huag.epidemics.pojo.DailyEpidemicInfo;
-import com.huag.epidemics.pojo.ProvincesInfo;
-import com.huag.epidemics.pojo.UserInfo;
+import com.huag.epidemics.pojo.*;
 import com.huag.epidemics.service.IEpidemicsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,18 +20,27 @@ public class EpidemicsController {
 
     @RequestMapping("/ajax/input")
     @ResponseBody
-    public AjaxResponseInfo inputData(@RequestBody DailyEpidemicInfo dailyEpidemicInfo, HttpSession session){
+    public AjaxResponseInfo inputData(@RequestBody DailyEpidemicInfo dailyEpidemicInfo, HttpSession session) {
 //        System.out.println(dailyEpidemicInfo);
-        UserInfo userInfo= (UserInfo) session.getAttribute("loginuser");
-        AjaxResponseInfo ajaxResponseInfo=new AjaxResponseInfo();
-        if(userInfo==null){
+        UserInfo userInfo = (UserInfo) session.getAttribute("loginuser");
+        AjaxResponseInfo ajaxResponseInfo = new AjaxResponseInfo();
+        if (userInfo == null) {
             ajaxResponseInfo.setCode(-2);
             ajaxResponseInfo.setMsg("权限不足");
-        }else {
+        } else {
             List<ProvincesInfo> list = this.iEpidemicsService.saveData(dailyEpidemicInfo, userInfo.getUserId());
 
             ajaxResponseInfo.setData(list);
         }
+        return ajaxResponseInfo;
+    }
+
+    @RequestMapping("/ajax/lastestData")
+    @ResponseBody
+    public AjaxResponseInfo findLastestData() {
+        List<EpidemicDetailInfo> list = this.iEpidemicsService.findLastestData();
+        AjaxResponseInfo ajaxResponseInfo = new AjaxResponseInfo();
+        ajaxResponseInfo.setData(list);
         return ajaxResponseInfo;
     }
 }

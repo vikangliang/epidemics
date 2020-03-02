@@ -106,11 +106,11 @@
             } else {
                 fillProvinceToTable(resp.data);
             }
-        }), "json"
+        }, "json")
     }
 
     function fillProvinceToTable(array) {
-        $("msg").html("");
+        $("#msg").html("");
         var tbody = $("#tbody1");
         tbody.empty();
         if (array && array.length > 0) {

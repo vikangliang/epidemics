@@ -1,8 +1,6 @@
 package com.huag.epidemics.service;
 
-import com.huag.epidemics.pojo.DailyEpidemicInfo;
-import com.huag.epidemics.pojo.ProvincesInfo;
-import com.huag.epidemics.pojo.UserInfo;
+import com.huag.epidemics.pojo.*;
 
 import java.util.List;
 
@@ -13,4 +11,10 @@ public interface IEpidemicsService {
      * @return
      */
     List<ProvincesInfo> saveData(DailyEpidemicInfo dailyEpidemicInfo, Integer userId);
+
+    /**
+     * 获取最新疫情数据
+     * @return
+     */
+    List<EpidemicDetailInfo> findLastestData();
 }
